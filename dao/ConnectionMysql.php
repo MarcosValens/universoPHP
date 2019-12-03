@@ -10,7 +10,7 @@ Class ConnectionMysql implements ConnectionInterface
         try {
             //$options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8', PDO::ATTR_PERSISTENT => true);
 
-            $this->connection = new PDO('mysql:host=localhost;dbname=univers', 'marcos', 'Root');
+            $this->connection = new PDO('mysql:host=localhost;dbname=univers', 'marcos', 'root');
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             print_r($e);

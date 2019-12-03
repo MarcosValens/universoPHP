@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/controller/PlanetController.php';
+require_once __DIR__ . '/model/User.php';
 $planetController = new PlanetController();
 $obj = $planetController->doGet();
 $planets = $obj->planets;
@@ -44,8 +45,6 @@ include 'template/menu.php';
         echo '</tr >';
     }
     ?>
-
-    </c:forEach>
 </table>
 </body>
 </html>

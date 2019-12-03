@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../dao/ConnectionMysql.php';
 require_once __DIR__ . '/../dao/PlanetDAO.php';
 require_once __DIR__ . '/../interceptor/RequestLoginFilter.php';
+require_once __DIR__ . '/../model/Planet.php';
 
 Class PlanetController {
 
@@ -21,10 +22,17 @@ Class PlanetController {
         $obj->planets = $planets;
 
         return $obj;
+
     }
 
     public function doPost() {
-        echo "entra a doPost";
+
+        $connection = ConnectionMysql::getInstance();
+        $planetDAO = new PlanetDAO($connection);
+        $planetId = filter_input(INPUT_POST, "planetId", FILTER_SANITIZE_SPECIAL_CHARS);
+        $planet = $planetDAO->get($planetId);
+        $planetDAO->delete($planet);
+
     }
 
 }
